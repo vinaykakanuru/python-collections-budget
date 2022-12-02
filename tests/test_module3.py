@@ -112,7 +112,7 @@ def test_task4_module3():
                                 if returns[0] == 'self:iter_e:__next__':
                                     iter_e_next_found = True
                                 if (isinstance(y.body[0].handlers[0], ast.ExceptHandler) and
-                                    y.body[0].handlers[0].type.id == 'StopIteration' and 
+                                    y.body[0].handlers[0].type.id == 'StopIteration' and
                                     y.body[0].handlers[0].name == 'stop'):
                                     exception_handler_found = True
                                     returns = utils.get_returns_from_child(y.body[0])
@@ -140,8 +140,8 @@ def test_task5_module3():
              if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.For) and 
-                        isinstance(y.iter, ast.Name) and 
+                    if (isinstance(y, ast.For) and
+                        isinstance(y.iter, ast.Name) and
                         y.iter.id == 'myBudgetList'):
                         for_mybudgetlist_found = True
                         calls = utils.get_calls_from_child(y)
@@ -151,7 +151,7 @@ def test_task5_module3():
     except Exception as e:
             # print('for print e = ' + str(e))
             pass
-    
+
     assert for_mybudgetlist_found, 'Did you create a for loop that iterates `myBudgetList`, with `entry` as the name of the iterator?'
     assert print_call_found, 'Did you call `print(entry)`?'
 
@@ -172,9 +172,9 @@ def test_task7_module3():
             if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.Assign) and 
+                    if (isinstance(y, ast.Assign) and
                         isinstance(y.targets[0], ast.Tuple)):
-                        if (y.targets[0].elts[0].id == 'fig' and 
+                        if (y.targets[0].elts[0].id == 'fig' and
                         y.targets[0].elts[1].id == 'ax'):
                             fig_ax_tuple_found = True
 
@@ -186,7 +186,7 @@ def test_task7_module3():
     except Exception as e:
             # print('for print e = ' + str(e))
             pass
-    
+
     assert fig_ax_tuple_found and plt_subplots_call_found, 'Did you call `plt.subplots()` and assign it a Tuple `fig,ax`??'
 
 # Assign labels []
@@ -201,7 +201,7 @@ def test_task8_module3():
             if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.Assign) and 
+                    if (isinstance(y, ast.Assign) and
                         isinstance(y.targets[0], ast.Name) and
                         y.targets[0].id == 'labels'):
                         assign_labels_found = True
@@ -228,7 +228,7 @@ def test_task9_module3():
             if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.Assign) and 
+                    if (isinstance(y, ast.Assign) and
                         isinstance(y.targets[0], ast.Name) and
                         y.targets[0].id == 'values'):
                         assign_values_found = True
@@ -258,7 +258,7 @@ def test_task10_module3():
             if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.Expr) and 
+                    if (isinstance(y, ast.Expr) and
                         isinstance(y.value, ast.Call)):
                         if (hasattr(y.value.func, 'value') and
                             y.value.func.value.id == 'ax' and
@@ -288,7 +288,7 @@ def test_task11_module3():
             if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.Expr) and 
+                    if (isinstance(y, ast.Expr) and
                         isinstance(y.value, ast.Call)):
                         if(hasattr(y.value.func, 'value') and
                                 y.value.func.value.id == 'ax' and
@@ -318,7 +318,7 @@ def test_task12_module3():
             if (isinstance(x, ast.FunctionDef) and
                     x.name == 'main'):
                 for y in x.body:
-                    if (isinstance(y, ast.Expr) and 
+                    if (isinstance(y, ast.Expr) and
                             isinstance(y.value, ast.Call)):
                         if(hasattr(y.value.func, 'value') and
                                 y.value.func.value.id == 'plt' and
